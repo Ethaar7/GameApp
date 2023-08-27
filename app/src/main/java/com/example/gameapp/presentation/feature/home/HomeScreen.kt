@@ -1,16 +1,19 @@
 package com.example.gameapp.presentation.feature.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
@@ -20,15 +23,15 @@ import com.example.gameapp.presentation.composables.CardLargeHome
 import com.example.gameapp.presentation.composables.GamePager
 import com.example.gameapp.presentation.composables.ItemLabel
 import com.example.gameapp.presentation.composables.PCustomChip
+import com.example.gamegate.theme.background
 
 class HomeScreen : Screen {
 
-
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     override fun Content() {
         val screenModel = rememberScreenModel { HomeScreenModel() }
-//        HomeContent(state =, pagerState =)
-
+        HomeContent(state = HomeState(), statePager = HomeUiState())
     }
 
 }
@@ -38,23 +41,28 @@ class HomeScreen : Screen {
 @Composable
 fun HomeContent(
     state: HomeState,
-    pagerState: PagerState,
+//    pagerState: PagerState,
+    statePager: HomeUiState
 ) {
     LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(background)
+            .padding(16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(bottom = 16.dp),
         columns = GridCells.Fixed(2)
     ) {
-        item(span = { GridItemSpan(2) })
-        {
-            GamePager(
-                games = state.games,
-                pagerState = pagerState,
-                onClickPagerItem = {}
-            )
-        }
+
+//        item(span = { GridItemSpan(2) })
+//        {
+//            GamePager(
+//                games = statePager.imageUrl,
+//                pagerState = pagerState,
+//                onClickPagerItem = {}
+//            )
+//        }
 
 
         item(
@@ -63,15 +71,14 @@ fun HomeContent(
             Column() {
                 ItemLabel(label = "New", onClick = {})
                 Game(
-                    state = state.games[0]
+                    statePager = HomeUiState()
                 )
             }
         }
-
         item(
             span = { GridItemSpan(2) },
         ) {
-            GameBest(state = state.games[0])
+            GameBest(statePager = HomeUiState())
         }
 
         item(
@@ -80,7 +87,7 @@ fun HomeContent(
             Column() {
                 ItemLabel(label = "Top Games", onClick = {})
                 Game(
-                    state = state.games[0]
+                    statePager = HomeUiState()
                 )
             }
         }
@@ -89,7 +96,7 @@ fun HomeContent(
             span = { GridItemSpan(2) },
         ) {
             Column() {
-                ItemLabel(label = "New", onClick = {})
+                ItemLabel(label = "Genres", onClick = {})
                 PCustomChip()
             }
         }
@@ -98,7 +105,7 @@ fun HomeContent(
             span = { GridItemSpan(2) },
         ) {
             GameFav(
-                state = state.games[0]
+                statePager = HomeUiState()
             )
         }
 
@@ -109,42 +116,46 @@ fun HomeContent(
 
 @Composable
 fun Game(
-    state: GameStat
+    statePager: HomeUiState
 ) {
     CardHome(
-        imageUrl = state.gameImage,
-        gameName = state.gameName,
-        gameType = state.gameType,
-        onClickCard = { state.isClicked }
+        imageUrl = statePager.imageUrl.toString(),
+        gameName = "stray",
+        gameType = "action",
+        onClickCard = {}
     )
 }
 
 @Composable
 fun GameBest(
-    state: GameStat
+    statePager: HomeUiState
 ) {
     Column() {
         ItemLabel(label = "The best action games", onClick = {})
         CardLargeHome(
-            imageUrl = state.gameImage,
-            gameName = state.gameName,
-            gameType = state.gameType,
-            onClickCard = { state.isClicked }
+            imageUrl = statePager.imageUrl.toString(),
+            gameName = "stray j",
+            gameType = "action",
+            onClickCard = {}
         )
     }
 }
 
 @Composable
 fun GameFav(
-    state: GameStat
+    statePager: HomeUiState
 ) {
     CardFav(
-        imageUrl = state.gameImage,
-        gameName = state.gameName,
-        gameType = state.gameType,
-        gameSize = state.gameSize,
-        evaluation = state.evaluation,
+        imageUrl = statePager.imageUrl.toString(),
+        gameName = "stray",
+        gameType = "action",
+        gameSize = "67GB",
+        evaluation = "4.7",
         onClickCard = {})
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun ggh() {
+    HomeContent(state = HomeState(), statePager = HomeUiState())
+}

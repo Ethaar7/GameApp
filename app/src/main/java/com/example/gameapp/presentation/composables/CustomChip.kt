@@ -72,7 +72,8 @@ fun CustomChip(
 @Composable
 fun PCustomChip() {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier.padding(top = 8.dp)
     ) {
         CustomChip(
             state = true,

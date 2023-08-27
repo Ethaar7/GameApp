@@ -31,7 +31,8 @@ import com.example.gamegate.theme.text87
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
 fun GamePager(
-    games: List<GameStat>,
+//    games: List<GameStat>,
+    games: List<Int>,
     pagerState: PagerState,
     onClickPagerItem: () -> Unit,
     modifier: Modifier = Modifier
@@ -103,3 +104,4 @@ fun PagerIndicatorItem(selected: Boolean) {
             .background(color, shape = RoundedCornerShape(cornerRadius))
     )
 }
+

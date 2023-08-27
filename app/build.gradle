@@ -132,4 +132,9 @@ dependencies {
     // Hilt integration
     implementation("cafe.adriel.voyager:voyager-hilt:$voyagerVersion")
 
+
+    // Paging Compose
+    implementation "com.google.accompanist:accompanist-pager:0.13.0"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.13.0"
+
 }

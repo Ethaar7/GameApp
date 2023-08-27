@@ -43,7 +43,8 @@ fun CardFav(
             .fillMaxWidth()
             .height(85.dp)
             .clip(RoundedCornerShape(16.dp))
-            .clickable(onClick = { onClickCard() }),
+            .clickable(onClick = { onClickCard() })
+            .padding(top = 16.dp),
         colors = CardDefaults.cardColors(
             containerColor = (CardColor)
         )

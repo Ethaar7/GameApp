@@ -36,7 +36,9 @@ fun CardLargeHome(
     onClickCard: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(top = 8.dp)) {
         Box(
             modifier = Modifier
                 .width(160.dp)
@@ -60,7 +62,9 @@ fun CardLargeHome(
                     modifier = Modifier.padding(start = 16.dp)
                 )
 
-                Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),horizontalArrangement = Arrangement.SpaceBetween) {
                     Text(
                         text = gameType,
                         style = Typography.bodySmall,

@@ -27,14 +27,16 @@ fun CardHome(
     onClickCard: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(top = 8.dp)) {
         Box(
             modifier = Modifier
                 .width(124.dp)
                 .height(156.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(CardColor)
-                .clickable(onClick = {onClickCard()})
+                .clickable(onClick = { onClickCard() })
 
         ) {
             Column() {
