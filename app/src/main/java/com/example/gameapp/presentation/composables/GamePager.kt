@@ -24,13 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.example.gameapp.presentation.feature.home.GameStat
 import com.example.gamegate.theme.primary
 import com.example.gamegate.theme.text87
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
-private fun GamePager(
-    games: List<String>,
+fun GamePager(
+    games: List<GameStat>,
     pagerState: PagerState,
     onClickPagerItem: () -> Unit,
     modifier: Modifier = Modifier
@@ -49,7 +50,7 @@ private fun GamePager(
 //            state = pagerState,
         ) {
             ImageNetwork(
-                imageUrl = games[it],
+                imageUrl = games.size.toString(),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

@@ -70,7 +70,7 @@ fun CustomChip(
 
 @Preview
 @Composable
-fun PreviewCustomChip() {
+fun PCustomChip() {
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -78,7 +78,7 @@ fun PreviewCustomChip() {
             state = true,
             text = "Adventures",
             onClick = { },
-            painter =  painterResource(id = R.drawable.group)
+            painter = painterResource(id = R.drawable.group)
         )
         CustomChip(
             state = false,
